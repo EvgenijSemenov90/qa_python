@@ -23,7 +23,7 @@ class TestBooksCollector:
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
 
-    def test_add_new_book_cant_add_book_twice(self):
+    def test_add_new_book_cannot_add_the_same_book_twice(self):
         collector = BooksCollector()
         book_name = 'Нельзя добавить одну и ту же книгу дважды'
 
@@ -32,7 +32,7 @@ class TestBooksCollector:
 
         assert len(collector.get_books_rating()) == 1
 
-    def test_set_book_rating_cant_set_rating_for_not_added_book(self):
+    def test_set_book_rating_cant_rate_a_book_that_is_not_on_the_list(self):
         collector = BooksCollector()
         not_added_book_name = 'Нельзя выставить рейтинг книге, которой нет в списке'
 
@@ -40,7 +40,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name=not_added_book_name) is None
 
-    def test_set_book_rating_cant_set_rating_below_minimum(self):
+    def test_set_book_rating_cant_set_the_rating_minimum(self):
         collector = BooksCollector()
         book_name = 'Нельзя выставить рейтинг меньше 1'
 
@@ -49,7 +49,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name=book_name) == 1
 
-    def test_set_book_rating_cant_set_rating_above_maximum(self):
+    def test_set_book_rating_cant_set_the_rating_maximum(self):
         collector = BooksCollector()
         book_name = 'Нельзя выставить рейтинг больше 10'
 
@@ -64,7 +64,7 @@ class TestBooksCollector:
 
         assert collector.get_book_rating(name=not_added_book_name) is None
 
-    def test_add_book_in_favorites(self):
+    def test_add_book_adding_a_book_to_favorites(self):
         collector = BooksCollector()
         book_name = 'Добавление книги в избранное'
 
@@ -73,7 +73,7 @@ class TestBooksCollector:
 
         assert collector.get_list_of_favorites_books()[0] == book_name
 
-    def test_add_book_in_favorites_cant_add_to_favorites_not_added_book(self):
+    def test_add_book_in_favorites_cant_add_to_favorites_if_it_is_not_added_book(self):
         collector = BooksCollector()
         book_name = 'Нельзя добавить книгу в избранное, если её нет в словаре'
 
